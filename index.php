@@ -18,9 +18,9 @@ include'config.php';
 $i=1;
 $query=mysqli_query($link,"Select * from tbltest where id_predmet=4 limit 40");
 while ($row=mysqli_fetch_array($query)){
-        echo $i."  ";
         $rows[]=$row['otvet1'];
-	echo "<p>".$i."-".$row['vopros']."</p>";
+        echo "<p></p>";
+	echo $i."-".$row['vopros']."<br>";
 	echo "<input type='checkbox' name='gender'>".$row['otvet1']."</br>";
 	echo "<input type='checkbox' name='gender'>".$row['otvet2']."</br>";
 	echo "<input type='checkbox' name='gender'>".$row['otvet3']."</br>";
