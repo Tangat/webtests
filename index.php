@@ -15,15 +15,18 @@
 <?php
 $rows=array();
 include'config.php';
-$query=mysqli_query($link,"Select * from tbltest");
+$i=1;
+$query=mysqli_query($link,"Select * from tbltest where id_predmet=4 limit 40");
 while ($row=mysqli_fetch_array($query)){
-	$rows[]=$row['otvet1'];
-	echo "<p>".$row['vopros']."</p>";
-	echo "<input type='radio' name='gender'>".$row['otvet1']."</br>";
-	echo "<input type='radio' name='gender'>".$row['otvet2']."</br>";
-	echo "<input type='radio' name='gender'>".$row['otvet3']."</br>";
-	echo "<input type='radio' name='gender'>".$row['otvet4']."</br>";
-	echo "<input type='radio' name='gender'>".$row['otvet5']."</br>";
+        echo $i."  ";
+        $rows[]=$row['otvet1'];
+	echo "<p>".$i."-".$row['vopros']."</p>";
+	echo "<input type='checkbox' name='gender'>".$row['otvet1']."</br>";
+	echo "<input type='checkbox' name='gender'>".$row['otvet2']."</br>";
+	echo "<input type='checkbox' name='gender'>".$row['otvet3']."</br>";
+	echo "<input type='checkbox' name='gender'>".$row['otvet4']."</br>";
+	echo "<input type='checkbox' name='gender'>".$row['otvet5']."</br>";
+        $i++;
 }
 
 ?>
@@ -31,5 +34,6 @@ while ($row=mysqli_fetch_array($query)){
 var arrayObjects = <?php echo json_encode($result_array); ?>
 </script>-->
 </form>
+    
 </body>
 </html>
