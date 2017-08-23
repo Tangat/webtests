@@ -1,3 +1,28 @@
+<?php
+session_start();
+include './config.php';
+    if(isset($_POST['submit'])){
+        if (!empty($_POST['zachnom'])) {
+            $zachnom=$_POST['zachnom'];
+            $sql11 = "SELECT * FROM `tblstudent` WHERE zachnom = '".$zachnom."'";
+            $zach= mysqli_query($link, $sql11);
+            $row_student= mysqli_fetch_array($zach);
+                if($zachnom == $row_student['zachnom']){
+                    header("Location: index1.php");
+                    setcookie("idstudent",$row_student['id_student']);
+                    setcookie("SNP",$row_student['SNP']);
+                    setcookie("zachnom",$row_student['zachnom']);
+                    setcookie("grup",$row_student['grup']);
+                    /*echo $_POST['zachnom'];          
+                    echo "<a href='qazaq.php'>asdasd</a>";*/
+                    //$_SESSION['id_student']=$row_student['id_student'];
+                }
+            echo $_POST['zachnom'];
+        } else {
+          echo 'Правильно введите ваше зачетный номер ';  
+        } ;        
+    };
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,30 +35,13 @@
         <script src='js/scripts.js'></script>	
 </head>
 <body>
-<form action="">
-
-<?php
-$rows=array();
-include'config.php';
-$i=1;
-$query=mysqli_query($link,"Select * from tbltest where id_predmet=4 limit 40");
-while ($row=mysqli_fetch_array($query)){
-        $rows[]=$row['otvet1'];
-        echo "<p></p>";
-	echo $i."-".$row['vopros']."<br>";
-	echo "<input type='checkbox' name='gender'>".$row['otvet1']."</br>";
-	echo "<input type='checkbox' name='gender'>".$row['otvet2']."</br>";
-	echo "<input type='checkbox' name='gender'>".$row['otvet3']."</br>";
-	echo "<input type='checkbox' name='gender'>".$row['otvet4']."</br>";
-	echo "<input type='checkbox' name='gender'>".$row['otvet5']."</br>";
-        $i++;
-}
-
-?>
-<!--<script>
-var arrayObjects = <?php echo json_encode($result_array); ?>
-</script>-->
-</form>
     
+    <form method="POST" class="form-horizontal">
+        <div class="col-md-4">
+            <label class="col-md-4 control-label">Зачетный номер: </label>
+            <input name="zachnom" type="text" class="form-control input-md">
+            <button name="submit" class="btn btn-primary">Войти</button>
+        </div>
+    </form> 
 </body>
 </html>
