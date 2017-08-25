@@ -12,7 +12,7 @@ include './config.php';
                     setcookie("idstudent",$row_student['id_student']);
                     setcookie("SNP",$row_student['SNP']);
                     setcookie("zachnom",$row_student['zachnom']);
-                    setcookie("grup",$row_student['grup']);
+                    setcookie("idgrup",$row_student['grup']);
                     /*echo $_POST['zachnom'];          
                     echo "<a href='qazaq.php'>asdasd</a>";*/
                     //$_SESSION['id_student']=$row_student['id_student'];

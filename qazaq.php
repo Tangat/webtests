@@ -1,5 +1,4 @@
 <?php
-session_start();
 include './config.php';
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -26,7 +25,9 @@ for ($i = 1; $i <= 40; $i++) {
 
 }
 
-        
+/*for ($j=1; $j=40; $j++){
+    
+}*/
 foreach ($q as $key => $value) {
     echo "<a href='?id=$key&id_test=$value'>".$key."</a> | ";
     //echo "$key => $value";
