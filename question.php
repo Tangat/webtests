@@ -11,7 +11,7 @@ if (isset($_GET['idpredmet'])) {
     } else {
         $row_q = mysqli_fetch_assoc($result_q);
         $first_q = $row_q['id_test'];
-        $last_q = mysqli_num_rows($result_q) + $first_q;
+        $last_q = mysqli_num_rows($result_q) + $first_q-1;
         $temp_q = array();
         for ($i = 1; $i <= 40; $i++) {
             er:
